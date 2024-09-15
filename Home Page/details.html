@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        #orderForm {
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        input[type="date"] {
+            padding: 7px;  /* adjust padding to match other inputs */
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>ORDER</h2>
+    <form id="orderForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required>
+        
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" required></textarea>
+        
+        <!-- Input fields for order date and delivery date -->
+        <label for="orderDate">Order Date:</label>
+        <input type="date" id="orderDateInput" name="orderDate">
+        
+        <label for="deliveryDate">Delivery Date:</label>
+        <input type="date" id="deliveryDateInput" name="deliveryDate" >
+        
+        <input type="submit" value="Submit" class="userDetail">
+    </form>
+
+ <script src="App.js"></script>
+ <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const today = new Date();
+    const orderDate = today.toISOString().split('T')[0];
+    const deliveryDate = new Date(today);
+    deliveryDate.setDate(today.getDate() + 3);
+    const deliveryDateString = deliveryDate.toISOString().split('T')[0];
+
+    document.getElementById("orderDateInput").value = orderDate;
+    document.getElementById("deliveryDateInput").value = deliveryDateString;
+});
+ </script>
+</body>
+</html>
+
